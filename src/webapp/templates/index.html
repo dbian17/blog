@@ -1,8 +1,9 @@
 <!doctype html>
-<!-- var: person -->
+<!-- var: review -->
 <title>Hello from Flask</title>
-{% if person %}
-  <h1>Hello {{ person }}!</h1>
+{% if review %}
+  <h1>Hello {{ review.name }}!</h1>
+  <h1>With rating {{review.rating }}</h1>
 {% else %}
   <h1>Hello, World!</h1>
 {% endif %}
