@@ -1,0 +1,11 @@
+{
+    "TableName": "Reviews",
+    "KeySchema": [
+      { "AttributeName": "Name", "KeyType": "HASH" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "Name", "AttributeType": "S" },
+      { "AttributeName": "Rating", "AttributeType": "I" },
+      { "AttributeName": "Review", "AttributeType": "S" }
+    ]
+}
