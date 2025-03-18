@@ -1,5 +1,6 @@
-from view_model.review import Review
+from webapp.view_model.place import Place
 
+# Load view structure
 def load(name: str):
 
-    return Review(name)
+    return Place(name)

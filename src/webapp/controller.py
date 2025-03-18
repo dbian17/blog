@@ -8,5 +8,5 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<name>')
 def hello(name=None):
-    example_review = view_loader.load(name)
-    return render_template('index.html', review=example_review)
+    example_place = view_loader.load(name)
+    return render_template('index.html', place=example_review)
