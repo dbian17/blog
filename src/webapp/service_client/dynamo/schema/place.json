@@ -1,10 +1,11 @@
 {
-    "TableName": "Reviews",
+    "TableName": "Places",
     "KeySchema": [
       { "AttributeName": "Name", "KeyType": "HASH" }
     ],
     "AttributeDefinitions": [
       { "AttributeName": "Name", "AttributeType": "S" },
+      { "AttributeName": "Type", "AttributeType": "SS"},
       { "AttributeName": "Rating", "AttributeType": "I" },
       { "AttributeName": "Review", "AttributeType": "S" }
     ]
