@@ -6,7 +6,7 @@
     "AttributeDefinitions": [
       { "AttributeName": "Name", "AttributeType": "S" },
       { "AttributeName": "Type", "AttributeType": "SS"},
-      { "AttributeName": "Rating", "AttributeType": "I" },
+      { "AttributeName": "Rating", "AttributeType": "N" },
       { "AttributeName": "Review", "AttributeType": "S" }
     ]
 }
