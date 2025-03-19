@@ -9,10 +9,9 @@ from service_client.dynamo import dynamo_service_client
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/<name>')
-def hello(name=None):
-    example_place = view_loader.load(name)
-    return render_template('index.html', place=example_place)
+def load_page():
+    places = dynamo_service_client.get_places()
+    return render_template('index.html', places=places)
 
 @app.route('/place', methods=['POST'])
 def add_place():
