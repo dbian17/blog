@@ -4,7 +4,7 @@ from decimal import Decimal
 class Place:
 
     def __init__(self, name: str, rating: float, types: list[str], review: str):
-        self.name = name
+        self.name = name.lower().replace(" ", "-")
         self.rating = Decimal(str(rating))
         self.types = types
         self.review = review
