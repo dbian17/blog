@@ -2,6 +2,13 @@
 <!-- var: place (Place Object) -->
 
 <p>Name: {{place.name}}</p>
+<p>Tagline: {{place.tagline}}</p>
+
 <p>Type: {{place.types}}</p>
+
+{% for type in place.types %}
+    <p> {{type}} </p>
+  {% endfor %}
+
 <p>Rating: {{place.rating}}</p>
 <p>Review: {{place.review}}</p>
