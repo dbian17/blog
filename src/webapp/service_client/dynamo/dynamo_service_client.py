@@ -4,7 +4,7 @@ from view_model.place import Place
 
 client = boto3.resource('dynamodb')
 
-# Gett all place objects from dynamoDb
+# Get all place objects from dynamoDb
 def get_places():
     table = client.Table('Places')
     response = table.scan()
@@ -14,8 +14,9 @@ def get_places():
 # Add place object into dynamoDb
 def add_place(place: Place):
 
+    print(place)
     table = client.Table('Places')
-    response = table.put_item(Item=place.__dict__)
+    # response = table.put_item(Item=place.__dict__)
 
-    print(response)
+    # print(response)
 
