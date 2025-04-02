@@ -4,6 +4,8 @@
     <script src="{{ url_for('static',filename='js/review-form.js') }}"></script>
 {% endblock %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/review-form.css') }}">
+
 <form action="/place" method="post" autocomplete="off">
     <label for="place-name">Name:</label><br>
     <input type="text" id="place-name" name="name"><br>
@@ -18,7 +20,7 @@
     <input type="text" id="place-tagline" name="tagline"><br>
 
     <label for="place-review">Review:</label><br>
-    <input type="text" id="place-review" name="review"><br>
+    <input type="text" id="place-review" name="review" class="resized-textbox"><br>
 
     <input type="submit"/>
 </form>
