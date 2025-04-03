@@ -14,9 +14,17 @@ def get_places():
 # Add place object into dynamoDb
 def add_place(place: Place):
 
-    print(place)
+    place_dict = place.__dict__
+    present_attributes = {key: value for key, value in place_dict.items() if value is not None and key != 'name'}
+
+    update_expression = 'SET {}'.format(','.join(f'{attribute_name}=:{attribute_name}' for attribute_name in present_attributes))
+    expression_attribute_values = {f':{attribute_name}': attribute_value for attribute_name , attribute_value in present_attributes.items()}
+
     table = client.Table('Places')
-    # response = table.put_item(Item=place.__dict__)
+    response = table.update_item(
+        Key={'name': place.name},
+        UpdateExpression=update_expression,
+        ExpressionAttributeValues=expression_attribute_values
+    )
 
-    # print(response)
-
+    print(response)

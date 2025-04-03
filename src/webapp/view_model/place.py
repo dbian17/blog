@@ -3,9 +3,11 @@ from decimal import Decimal
 
 class Place:
 
-    def __init__(self, name: str, rating: float, types: list[str], review: str, tagline: str = None):
+    def __init__(self, name: str, rating: float = None, types: list[str] = None, review: str = None, tagline: str = None):
         self.name = name.lower().replace(" ", "-")
-        self.rating = Decimal(str(rating))
+        
+        if rating:
+            self.rating = Decimal(str(rating))
         self.types = types
         self.review = review
         self.tagline = tagline

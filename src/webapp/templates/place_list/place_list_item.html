@@ -6,9 +6,11 @@
 
 <p>Type: {{place.types}}</p>
 
-{% for type in place.types %}
-    <p> {{type}} </p>
+{% if place.types %}
+  {% for type in place.types %}
+      <p> {{type}} </p>
   {% endfor %}
+{% endif %}
 
 <p>Rating: {{place.rating}}</p>
 <p>Review: {{place.review}}</p>
