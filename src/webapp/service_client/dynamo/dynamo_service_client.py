@@ -13,7 +13,6 @@ def get_places():
 
 # Add place object into dynamoDb
 def add_place(place: Place):
-
     place_dict = place.__dict__
     present_attributes = {key: value for key, value in place_dict.items() if value is not None and key != 'name'}
 
@@ -27,4 +26,4 @@ def add_place(place: Place):
         ExpressionAttributeValues=expression_attribute_values
     )
 
-    print(response)
+    return response['ResponseMetadata']['HTTPStatusCode']

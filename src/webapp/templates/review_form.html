@@ -6,23 +6,23 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/review-form.css') }}">
 
-<form action="/place" method="post" autocomplete="off">
-    <label for="place-name">Name:</label><br>
-    <input type="text" id="place-name" name="name"><br>
+<form id="review-form" action="/place" method="post" autocomplete="off">
+    <label>Name:</label><br>
+    <input type="text" id="name"><br>
 
-    <label for="place-rating">Rating:</label><br>
-    <input type="text" id="place-rating" name="rating"><br>
+    <label>Rating:</label><br>
+    <input type="text" id="rating"><br>
 
-    <label for="place-types">Types:</label><br>
-    <input type="text" id="place-types" name="types"><br>
+    <label>Types:</label><br>
+    <input type="text" id="types"><br>
 
-    <label for="place-tagline">Tagline:</label><br>
-    <input type="text" id="place-tagline" name="tagline"><br>
+    <label>Tagline:</label><br>
+    <input type="text" id="tagline"><br>
 
-    <label for="place-review">Review:</label><br>
-    <textarea id="review-input" name="review" rows="4" cols="50"></textarea>
+    <label>Review:</label><br>
+    <textarea id="review" rows="20" cols="60"></textarea><br>
 
-    <input type="submit"/>
+    <button id="review-form-submit-button" type="button"> Submit Review </button>
 </form>
 
 
