@@ -1,5 +1,5 @@
 import boto3
-from view_model.place import Place
+from api.view_model.place import Place
 
 
 client = boto3.resource('dynamodb')

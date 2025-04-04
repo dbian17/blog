@@ -1,6 +1,7 @@
 from flask import request
-from view_model.place import Place
 import simplejson as json
+
+from api.view_model.place import Place
 
 # Parse request body into place object. Assumes place object is json string in request payload
 def parse_place(request: request):
