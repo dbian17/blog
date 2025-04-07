@@ -11,6 +11,18 @@ def get_places():
     places = [Place(**response_item_dict) for response_item_dict in response['Items']]
     return places
 
+def get_place(place_name):
+
+    table = client.Table('Places')
+    key = {'name': place_name}
+    response = table.get_item(Key=key)
+    
+    if 'Item' in response:
+        response_item_dict = response['Item']
+        return Place(**response_item_dict)
+    else:
+        return None
+
 # Add place object into dynamoDb
 def add_place(place: Place):
     place_dict = place.__dict__

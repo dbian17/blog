@@ -17,8 +17,13 @@ def load_page():
 def load_review_submission():
     return render_template('review_form.html')
 
+@app.route('/place/<place_name>', methods=['GET'])
+def get_place(place_name):
+    place = dynamo_service_client.get_place(place_name)
+    return render_template('place.html', place=place, place_name=place_name)
+
 @app.route('/place', methods=['POST'])
 def add_place():
-    place = request_parser.parse_place(request)
-    dynamo_service_client.add_place(place)
+    new_place = request_parser.parse_place(request)
+    dynamo_service_client.add_place(new_place)
     return "receive"
