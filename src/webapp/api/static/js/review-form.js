@@ -33,7 +33,7 @@ function executeRequest(formElements) {
 
     const jsonPayload = JSON.stringify(data);
 
-    const responseStatus = fetch('http://127.0.0.1:5000/place', {
+    const responseStatus = fetch('https://blog-azure-seven-70.vercel.app/place', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -10,8 +10,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def load_page():
-    # places = dynamo_service_client.get_places()
-    places = []
+    places = dynamo_service_client.get_places()
     return render_template('index.html', places=places)
 
 @app.route('/review', methods=['GET'])
