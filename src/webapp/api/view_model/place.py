@@ -3,7 +3,7 @@ from decimal import Decimal
 
 class Place:
 
-    def __init__(self, name: str, rating: float = None, types: list[str] = None, review: str = None, tagline: str = None):
+    def __init__(self, name: str, rating: float = 0, types: list[str] = None, review: str = None, tagline: str = None):
         self.name = name.lower().replace(" ", "-")
         
         if rating:
