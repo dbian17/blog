@@ -1,25 +1,26 @@
 .place-list-table {
     margin: 25px 0;
-    font-family: sans-serif;
+    font-family: "Montserrat";
     width:70%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
+    text-align: center;
+    font-optical-sizing: auto;
 }
 
 .place-list-table th {
-    font-family: "Montserrat";
-    text-align: center;
     font-weight:600;
-    font-optical-sizing: auto;
-    font-size: 16px
-
+    font-size: 16px;
+    height: 40px;
+    border-bottom: 1px solid #ced4de;
 }
 
 .place-list-table tr {
     height: 60px;
     border-bottom: 1px solid #ced4de;
+    cursor: pointer;
 }
 
 .place-list-table tr:hover {
@@ -27,10 +28,7 @@
 }
 
 .place-list-table td {
-    font-family: "Montserrat";
-    text-align: center;
     font-weight:500;
-    font-optical-sizing: auto;
     font-size: 14px;
 }
 

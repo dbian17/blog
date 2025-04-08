@@ -1,5 +1,5 @@
-# import sys
-# sys.path.insert(0, '/home/david/blog/src/webapp/')
+import sys
+sys.path.insert(0, '/home/david/blog/src/webapp/')
 
 from flask import Flask
 from flask import render_template
