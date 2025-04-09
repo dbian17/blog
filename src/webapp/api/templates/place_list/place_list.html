@@ -1,24 +1,29 @@
-{% block javascript %}
-    <script src="{{ url_for('static',filename='js/place-list.js') }}"></script>
-{% endblock %}
+{% extends "content.html" %}
+{% block content %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/place-list.css') }}">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-</style>
+    {% block javascript %}
+        <script src="{{ url_for('static',filename='js/place-list.js') }}"></script>
+    {% endblock %}
 
-<input type="text" id="place-list-search-bar" onkeyup="search()" placeholder="Search...">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/place-list.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
 
-<table class="place-list-table">
-    <tr>
-        <th>Rating</th>
-        <th>Name</th>
-        <th>Types</th>
-        <th>Tagline</th>
-    </tr>
-    {% for place in places %}
-        <tr onclick="window.location=window.location.origin + '/place/{{place.name}}'">
-        {% include 'place_list/place_list_item.html' %}
+    <input type="text" id="place-list-search-bar" onkeyup="search()" placeholder="Search...">
+
+    <table class="place-list-table">
+        <tr>
+            <th>Rating</th>
+            <th>Name</th>
+            <th>Types</th>
+            <th>Tagline</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for place in places %}
+            <tr onclick="window.location=window.location.origin + '/place/{{place.name}}'">
+            {% include 'place_list/place_list_item.html' %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,24 +1,27 @@
-<!doctype html>
-<!-- var: place (Place Object) -->
-<!-- var: place_name (name of requested place) -->
+{% extends "content.html" %}
+{% block content %}
+  <!doctype html>
+  <!-- var: place (Place Object) -->
+  <!-- var: place_name (name of requested place) -->
 
-{% if place %}
-    <p>Name: {{place.name}}</p>
-    <p>Tagline: {{place.tagline}}</p>
+  {% if place %}
+      <p>Name: {{place.name}}</p>
+      <p>Tagline: {{place.tagline}}</p>
 
-    <p>Coordinates: {{place.coordinates}}</p>
+      <p>Coordinates: {{place.coordinates}}</p>
 
-    <p>Type: {{place.types}}</p>
+      <p>Type: {{place.types}}</p>
 
-    {% if place.types %}
-    {% for type in place.types %}
-        <p> {{type}} </p>
-    {% endfor %}
-    {% endif %}
+      {% if place.types %}
+      {% for type in place.types %}
+          <p> {{type}} </p>
+      {% endfor %}
+      {% endif %}
 
-    <p>Rating: {{place.rating}}</p>
-    <p>Review: {{place.review}}</p>
-{% else %}
-  <h1>Could not find entry for {{place_name}}</h1>
-{% endif %}
+      <p>Rating: {{place.rating}}</p>
+      <p>Review: {{place.review}}</p>
+  {% else %}
+    <h1>Could not find entry for {{place_name}}</h1>
+  {% endif %}
+{% endblock %}
 

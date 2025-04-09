@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.css' />
-    <script src='https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.js'></script>
-    <style>
-        body { margin: 0; padding: 0; }
-        html, body, #map { height: 100%; }
-    </style>
-</head>
-<body>
-<div id="map"></div>
+{% extends "content.html" %}
+{% block content %}
+  <head>
+      <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.css' />
+      <script src='https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.js'></script>
+      <style>
+          body { margin: 0; padding: 0; }
+          html, body, #map { height: 100%; }
+      </style>
+  </head>
+  <body>
+  <div id="map"></div>
 
-{% block javascript %}
-  <script>
-    var map_pins = {{ map_pins | tojson }};
-  </script>
-  <script src="{{ url_for('static',filename='js/map.js') }}"></script>
+  {% block javascript %}
+    <script>
+      var map_pins = {{ map_pins | tojson }};
+    </script>
+    <script src="{{ url_for('static',filename='js/map.js') }}"></script>
+  {% endblock %}
+  </body>
+
 {% endblock %}
-</body>
-</html>
