@@ -11,7 +11,7 @@
         <th>Tagline</th>
     </tr>
     {% for place in places %}
-        <tr onclick="window.location='https://blog-azure-seven-70.vercel.app/place/{{place.name}}'">
+        <tr onclick="window.location=window.location.origin + '/place/{{place.name}}'">
         {% include 'place_list/place_list_item.html' %}
         </tr>
     {% endfor %}
