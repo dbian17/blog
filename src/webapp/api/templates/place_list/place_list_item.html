@@ -8,7 +8,7 @@
 <td>
   {% if place.types %}
     {% for type in place.types %}
-    <button class="place-list-item-type"> {{type}} </button>
+    <button class="place-list-item-type"> {{display_name(type)}} </button>
     {% endfor %}
   {% endif %}
 </td>
