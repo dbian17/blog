@@ -14,6 +14,8 @@ window.addEventListener('load', function () {
         } else {
             reviewForm.append("Review post failed");
         }
+
+        reviewForm.reset();
     });
   })
 
