@@ -15,7 +15,9 @@ class Place:
 
         if coordinates:
             self.coordinates = [Decimal(str(coordinate)) for coordinate in coordinates]
+        else:
+            self.coordinates = None
 
-    def __str__(self):
+    def __repr__(self):
         return json.dumps(self.__dict__)
     

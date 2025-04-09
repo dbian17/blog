@@ -1,7 +1,6 @@
 import boto3
 from api.view_model.place import Place
 
-
 client = boto3.resource('dynamodb')
 
 # Get all place objects from dynamoDb

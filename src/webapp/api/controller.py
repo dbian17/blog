@@ -6,8 +6,8 @@ from flask import render_template
 from flask import request
 
 from api.view_loading import request_parser
+from api.view_loading import map_view_loader
 from api.service_client.dynamo import dynamo_service_client
-
 
 app = Flask(__name__)
 
@@ -17,10 +17,16 @@ def display_name(place_name):
 app.jinja_env.globals.update(display_name = display_name)
 
 @app.route('/', methods=['GET'])
-def load_page():
+@app.route('/map', methods=['GET'])
+def load_map():
+    map_pins = map_view_loader.load(dynamo_service_client.get_places())
+    return render_template('map.html', map_pins=map_pins)
+
+@app.route('/list', methods=['GET'])
+def load_list():
     places = dynamo_service_client.get_places()
     places.sort(key = lambda place: place.rating, reverse=True)
-    return render_template('index.html', places=places)
+    return render_template('place_list/place_list.html', places=places)
 
 @app.route('/review', methods=['GET'])
 def load_review_submission():
