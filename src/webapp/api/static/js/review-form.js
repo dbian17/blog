@@ -1,5 +1,5 @@
-const NON_TYPE_FORM_LABELS = ["name", "rating", "tagline", "review"]
-const TYPE_FORM_LABEL = "types";
+const NON_LIST_FORM_LABELS = ["name", "rating", "tagline", "review"]
+const LIST_FORM_LABELS = ["types", "coordinates"];
 
 window.addEventListener('load', function () {
     const review_button = document.getElementById("review-form-submit-button");
@@ -19,17 +19,20 @@ window.addEventListener('load', function () {
 
 function executeRequest(formElements) {
     var data = {}
-    NON_TYPE_FORM_LABELS.forEach(function mapFormElementsToRequest(inputName) {
+    NON_LIST_FORM_LABELS.forEach(function mapFormElementsToRequest(inputName) {
         var input = formElements[inputName].value;
         if (input) {
             data[inputName] = input
         }
     })
 
-    if (formElements[TYPE_FORM_LABEL].value) {
-        type_list = formElements[TYPE_FORM_LABEL].value.split(" ")
-        data[TYPE_FORM_LABEL] = type_list
-    }
+    LIST_FORM_LABELS.forEach(function mapListFormElementsToRequest(inputName) {
+        var input = formElements[inputName].value;
+        if (input) {
+            type_list = formElements[inputName].value.split(" ")
+            data[inputName] = type_list
+        }
+    })
 
     const jsonPayload = JSON.stringify(data);
 
