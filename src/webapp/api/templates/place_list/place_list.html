@@ -1,7 +1,13 @@
+{% block javascript %}
+    <script src="{{ url_for('static',filename='js/place-list.js') }}"></script>
+{% endblock %}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/place-list.css') }}">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 </style>
+
+<input type="text" id="place-list-search-bar" onkeyup="search()" placeholder="Search...">
 
 <table class="place-list-table">
     <tr>

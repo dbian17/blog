@@ -29,7 +29,7 @@ function executeRequest(formElements) {
     LIST_FORM_LABELS.forEach(function mapListFormElementsToRequest(inputName) {
         var input = formElements[inputName].value;
         if (input) {
-            type_list = formElements[inputName].value.split(" ")
+            type_list = formElements[inputName].value.split(", ")
             data[inputName] = type_list
         }
     })
