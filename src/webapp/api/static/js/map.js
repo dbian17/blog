@@ -1,7 +1,7 @@
 const map = new maplibregl.Map({
     container: 'map',
     style:
-        'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+        'https://www.overrice.nyc/map-styles/light.json',
     center: [-73.96919956110607,40.723901332022166],
     zoom: 12
 });
@@ -13,4 +13,3 @@ map_pins.forEach((map_pin) => {
         .addTo(map);
     }
   });
-
