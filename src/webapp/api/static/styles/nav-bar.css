@@ -3,7 +3,7 @@
     position: fixed;
     z-index: 999;
     display: inline-block;
-    margin-bottom: 50px
+    margin-bottom: 50px /* Match height of nav bar */
 }
 
 #nav-bar ul {

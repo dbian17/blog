@@ -3,8 +3,9 @@
   <!doctype html>
   <!-- var: place (Place Object) -->
   <!-- var: place_name (name of requested place) -->
-
-  {% if place %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/place.css') }}">
+  <div id="place-content">
+    {% if place %}
       <p>Name: {{place.name}}</p>
       <p>Tagline: {{place.tagline}}</p>
 
@@ -19,9 +20,11 @@
       {% endif %}
 
       <p>Rating: {{place.rating}}</p>
-      <p>Review: {{place.review}}</p>
-  {% else %}
-    <h1>Could not find entry for {{place_name}}</h1>
-  {% endif %}
+
+      <p id="place-review">{{place.review}}</p>
+    {% else %}
+      <h1>Could not find entry for {{place_name}}</h1>
+    {% endif %}
+  </div>
 {% endblock %}
 
