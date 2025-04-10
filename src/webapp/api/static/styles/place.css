@@ -1,6 +1,8 @@
+@import url('/static/styles/place-list-item-type.css');
+
 #place-content {
     width: 80%;
-    margin-top: 50px;
+    margin-top: 70px; /* Match height of nav bar */
     margin-left: auto;
     margin-right: auto;
 }

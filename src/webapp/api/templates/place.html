@@ -7,16 +7,14 @@
   <div id="place-content">
     {% if place %}
       <p>Name: {{place.name}}</p>
-      <p>Tagline: {{place.tagline}}</p>
-
-      <p>Coordinates: {{place.coordinates}}</p>
-
-      <p>Type: {{place.types}}</p>
+      {% if place.tagline %}
+        <p>Tagline: {{place.tagline}}</p>
+      {% endif %}
 
       {% if place.types %}
-      {% for type in place.types %}
-          <p> {{type}} </p>
-      {% endfor %}
+        {% for type in place.types %}
+        <button class="place-list-item-type"> {{display_name(type)}} </button>
+        {% endfor %}
       {% endif %}
 
       <p>Rating: {{place.rating}}</p>
