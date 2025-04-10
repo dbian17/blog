@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
 
 <body>
     <table class="nav-bar">
         <tr">
-            <td onclick="window.location=window.location.origin + '/map'"> Map </td>
-            <td onclick="window.location=window.location.origin + '/list'"> List </td>
+            <td onclick="window.location='/map'"> Map </td>
+            <td onclick="window.location='/list'"> List </td>
         </tr>
     </table>
     {% block content %}{% endblock %}

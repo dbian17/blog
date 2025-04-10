@@ -6,9 +6,6 @@
     {% endblock %}
 
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/place-list.css') }}">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
 
     <input type="text" id="place-list-search-bar" onkeyup="search()" placeholder="Search...">
 
@@ -20,7 +17,7 @@
             <th>Tagline</th>
         </tr>
         {% for place in places %}
-            <tr onclick="window.location=window.location.origin + '/place/{{place.name}}'">
+            <tr onclick="window.location='/place/{{place.name}}'">
             {% include 'place_list/place_list_item.html' %}
             </tr>
         {% endfor %}

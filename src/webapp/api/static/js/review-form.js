@@ -38,7 +38,7 @@ function executeRequest(formElements) {
 
     const jsonPayload = JSON.stringify(data);
 
-    const responseStatus = fetch(window.location.origin + '/place', {
+    const responseStatus = fetch('/place', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
