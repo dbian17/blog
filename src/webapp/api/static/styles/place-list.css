@@ -7,18 +7,19 @@
     border: 1px solid #ddd; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
     display: block;
-    margin-top: 50px; /* Match height of nav bar */
+    margin-top: 70px; /* Match height of nav bar */
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
-    padding-bottom: 10px
+    padding-bottom: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .place-list-table {
     margin: 25px 0;
     font-family: "Montserrat";
     width:70%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;

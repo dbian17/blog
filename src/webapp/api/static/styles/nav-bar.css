@@ -1,11 +1,26 @@
+body {
+    margin: 0px
+}
+
 #nav-bar {
     top: 0;
     position: fixed;
     z-index: 999;
     display: inline-block;
-    margin-bottom: 50px /* Match height of nav bar */
+    font-family: "Montserrat";
+    background-color: rgb(12, 198, 245);
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 #nav-bar ul {
     display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+#nav-bar ul:hover {
+    background-color: #ddd;
+    margin:auto;
 }
