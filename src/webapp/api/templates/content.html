@@ -2,14 +2,12 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 </style>
-
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/nav-bar.css') }}">
 <body>
-    <table class="nav-bar">
-        <tr">
-            <td onclick="window.location='/map'"> Map </td>
-            <td onclick="window.location='/list'"> List </td>
-        </tr>
-    </table>
+    <li id="nav-bar">
+            <ul onclick="window.location='/map'"> Map </ul>
+            <ul onclick="window.location='/list'"> List </ul>
+    </li>
     {% block content %}{% endblock %}
 </body>
 </html>
