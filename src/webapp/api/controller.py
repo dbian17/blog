@@ -35,7 +35,6 @@ def load_review_submission():
 @app.route('/place/<place_name>', methods=['GET'])
 def get_place(place_name):
     place = dynamo_service_client.get_place(place_name)
-    print(place)
     return render_template('place.html', place=place, place_name=place_name)
 
 @app.route('/place', methods=['POST'])

@@ -6,9 +6,10 @@ const map = new maplibregl.Map({
     zoom: 12
 });
 
-// const popup = new maplibregl.Popup({offset: 25}).setText(
-//     'Construction on the Washington Monument began in 1848.'
-// );
+const popup = new maplibregl.Popup({
+    closeButton: false,
+    closeOnClick: false
+});
 
 const placeSideSheet = document.getElementById("place-side-sheet");
 
@@ -17,13 +18,20 @@ map.on('load', () => {
         if (mapPinData['coordinates']) {
             var mapPin = new maplibregl.Marker()
             .setLngLat(mapPinData['coordinates'].reverse())
-            // .setPopup(popup)
             .addTo(map)
 
             var mapPinElement = mapPin.getElement()
             mapPinElement.addEventListener("click", function() {
-                placeSideSheet.innerText = mapPinData['name']
                 replaceSideSheetContent(mapPinData['name']);
+            });
+
+            mapPinElement.addEventListener("mousemove", function() {
+                mapPinElement.style.cursor = 'pointer';
+                popup.setLngLat(mapPinData['coordinates']).setHTML(mapPinData['rating'] + ' ' + mapPinData['name'].replaceAll("-", " ")).addTo(map);
+            });
+
+            mapPinElement.addEventListener("mouseleave", function() {
+                popup.remove();
             });
         }
     });

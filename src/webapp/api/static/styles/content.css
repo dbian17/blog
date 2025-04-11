@@ -33,3 +33,7 @@ body {
     margin-top:50px;
     width: 30%;
 }
+
+.capitalize {
+    text-transform: capitalize;
+}
