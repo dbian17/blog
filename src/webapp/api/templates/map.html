@@ -9,11 +9,14 @@
       </style>
   </head>
   <body>
+
+  <div id="place-side-sheet"></div>
+
   <div id="map"></div>
 
   {% block javascript %}
     <script>
-      var map_pins = {{ map_pins | tojson }};
+      var mapPinsData = {{ map_pins_data | tojson }};
     </script>
     <script src="{{ url_for('static',filename='js/map.js') }}"></script>
   {% endblock %}

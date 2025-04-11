@@ -20,7 +20,7 @@ app.jinja_env.globals.update(display_name = display_name)
 @app.route('/map', methods=['GET'])
 def load_map():
     map_pins = map_view_loader.load(dynamo_service_client.get_places())
-    return render_template('map.html', map_pins=map_pins)
+    return render_template('map.html', map_pins_data=map_pins)
 
 @app.route('/list', methods=['GET'])
 def load_list():

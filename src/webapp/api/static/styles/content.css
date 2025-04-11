@@ -24,3 +24,12 @@ body {
     background-color: #ddd;
     margin:auto;
 }
+
+#place-side-sheet {
+    z-index: 5;
+    position:fixed;
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    margin-top:50px;
+    width: 30%;
+}

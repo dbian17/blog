@@ -45,8 +45,12 @@
     background-color: #ddd;
 }
 
+.place-list-item-rating {
+    font-weight: 800;
+    color: #0CF589
+}
+
 .place-list-table td {
     font-weight:500;
     font-size: 14px;
 }
-
