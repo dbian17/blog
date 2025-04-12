@@ -19,14 +19,14 @@ app.jinja_env.globals.update(display_name = display_name)
 @app.route('/', methods=['GET'])
 @app.route('/map', methods=['GET'])
 def load_map():
-    map_pins = map_view_loader.load(dynamo_service_client.get_ranked_places(descending=False))
+    # go in reverse order so top places load last
+    map_pins = map_view_loader.load(dynamo_service_client.get_all_ranked_place_data(descending=False))
     return render_template('map.html', map_pins_data=map_pins)
 
 @app.route('/list', methods=['GET'])
 def load_list():
-    # go in reverse order so top places load last
-    places = dynamo_service_client.get_ranked_places()
-    return render_template('place_list/place_list.html', places=places)
+    places_data = dynamo_service_client.get_all_ranked_place_data()
+    return render_template('place_list/place_list.html', places=places_data)
 
 @app.route('/review', methods=['GET'])
 def load_review_submission():
@@ -34,8 +34,9 @@ def load_review_submission():
 
 @app.route('/place/<place_name>', methods=['GET'])
 def get_place(place_name):
-    place = dynamo_service_client.get_place(place_name)
-    return render_template('place.html', place=place, place_name=place_name)
+    place_data = dynamo_service_client.get_place_data(place_name)
+    place_review = dynamo_service_client.get_place_review(place_name)
+    return render_template('place.html', place_data=place_data, place_review=place_review, place_name=place_name)
 
 @app.route('/place', methods=['POST'])
 def add_place():

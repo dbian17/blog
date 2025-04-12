@@ -1,23 +1,27 @@
 import simplejson as json
 from decimal import Decimal
 
-# Rename to place_request_model?
-class Place:
+from api.view_model.place import Place
 
-    def __init__(self, name: str, rating: float = 0, types: list[str] = None, review: str = None, tagline: str = None, coordinates: list[float] = None):
+class Place_Data:
+
+    def __init__(self, name: str, rating: float = 0, types: list[str] = None, tagline: str = None, coordinates: list[float] = None):
         self.name = name.lower().replace(" ", "-")
         
         if rating:
             self.rating = Decimal(str(rating))
         
         self.types = types
-        self.review = review
         self.tagline = tagline
 
         if coordinates:
             self.coordinates = [Decimal(str(coordinate)) for coordinate in coordinates]
         else:
             self.coordinates = None
+
+    def get_from_place(place: Place):
+        return Place_Data(name=place.name, rating=place.rating, types=place.types, tagline=place.tagline, coordinates=place.coordinates) 
+
 
     def __repr__(self):
         return json.dumps(self.__dict__)
