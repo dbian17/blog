@@ -4,6 +4,13 @@ from api.view_model.place import Place
 client = boto3.resource('dynamodb')
 
 # Get all place objects from dynamoDb
+def get_ranked_places(descending=True):
+    table = client.Table('Places')
+    response = table.scan()
+    places = [Place(**response_item_dict) for response_item_dict in response['Items']]
+    places.sort(key = lambda place: place.rating, reverse=descending)
+    return places
+
 def get_places():
     table = client.Table('Places')
     response = table.scan()

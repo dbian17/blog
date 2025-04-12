@@ -15,6 +15,7 @@ const placeSideSheet = document.getElementById("place-side-sheet");
 
 map.on('load', () => {
     mapPinsData.forEach((mapPinData) => {
+        console.log(mapPinData)
         if (mapPinData['coordinates']) {
             var mapPin = new maplibregl.Marker()
             .setLngLat(mapPinData['coordinates'].reverse())
