@@ -57,12 +57,18 @@ def add_place(place: Place):
 def add_place_review(place: Place):
     place_review_dict = Place_Review.get_from_place(place).__dict__
     present_attributes = {key: value for key, value in place_review_dict.items() if value is not None and key != 'name'}
-    return add_attributes_to_table(PLACE_REVIEW_TABLE_NAME, get_place_table_key(place.name), present_attributes)
+    if len(present_attributes) > 0:
+        return add_attributes_to_table(PLACE_REVIEW_TABLE_NAME, get_place_table_key(place.name), present_attributes)
+    else:
+        return '200'
 
 def add_place_data(place: Place):
     place_data_dict = Place_Data.get_from_place(place).__dict__
     present_attributes = {key: value for key, value in place_data_dict.items() if value is not None and key != 'name'}
-    return add_attributes_to_table(PLACE_DATA_TABLE_NAME, get_place_table_key(place.name), present_attributes)
+    if len(present_attributes) > 0:
+        return add_attributes_to_table(PLACE_DATA_TABLE_NAME, get_place_table_key(place.name), present_attributes)
+    else:
+        return '200'
 
 def add_attributes_to_table(table_name: str, key: dict, attributes):
     update_expression = 'SET {}'.format(','.join(f'{attribute_name}=:{attribute_name}' for attribute_name in attributes))

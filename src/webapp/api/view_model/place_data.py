@@ -10,7 +10,9 @@ class Place_Data:
         
         if rating:
             self.rating = Decimal(str(rating))
-        
+        else:
+            self.rating = None
+            
         self.types = types
         self.tagline = tagline
 
@@ -20,6 +22,7 @@ class Place_Data:
             self.coordinates = None
 
     def get_from_place(place: Place):
+        print(place)
         return Place_Data(name=place.name, rating=place.rating, types=place.types, tagline=place.tagline, coordinates=place.coordinates) 
 
 

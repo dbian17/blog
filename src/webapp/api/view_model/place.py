@@ -9,6 +9,8 @@ class Place:
         
         if rating:
             self.rating = Decimal(str(rating))
+        else:
+            self.rating = None
         
         self.types = types
         self.review = review
