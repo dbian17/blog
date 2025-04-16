@@ -11,35 +11,117 @@ const popup = new maplibregl.Popup({
     closeOnClick: false
 });
 
-const placeSideSheet = document.getElementById("place-side-sheet");
+const placeSideSheet = document.getElementById('place-side-sheet');
 
-map.on('load', () => {
-    mapPinsData.forEach((mapPinData) => {
-        console.log(mapPinData)
-        if (mapPinData['coordinates']) {
-            var mapPin = new maplibregl.Marker()
-            .setLngLat(mapPinData['coordinates'].reverse())
-            .addTo(map)
+map.on('load', async () => {
+    // const image = await map.loadImage('https://maplibre.org/maplibre-gl-js/docs/assets/custom_marker.png');
+    // // Add an image to use as a custom marker
+    // map.addImage('custom-marker', image.data);
 
-            var mapPinElement = mapPin.getElement()
-            mapPinElement.addEventListener("click", function() {
-                replaceSideSheetContent(mapPinData['name']);
-            });
-
-            mapPinElement.addEventListener("mousemove", function() {
-                mapPinElement.style.cursor = 'pointer';
-                popup.setLngLat(mapPinData['coordinates']).setHTML(mapPinData['rating'] + ' ' + mapPinData['name'].replaceAll("-", " ")).addTo(map);
-            });
-
-            mapPinElement.addEventListener("mouseleave", function() {
-                popup.remove();
-            });
+    map.addSource('places', {
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': getMapPinFeatures()
         }
     });
+
+    // Add a layer showing the places.
+    map.addLayer({
+        'id': 'places',
+        'type': 'circle',
+        'source': 'places',
+        'layout': {
+            'circle-sort-key':['to-number', ['get', 'rating']],
+
+            // 'icon-image': 'custom-marker',
+            // 'icon-allow-overlap': true,
+            // 'symbol-sort-key': ['to-number', ['get', 'rating']],
+            // 'symbol-z-order' : 'source'
+
+        },
+        'paint': {
+            'circle-color':  [
+                'interpolate-hcl',
+                ['linear'],
+                ['to-number', ['get', 'rating']],
+                2,
+                '#F50C5E',
+                10,
+                '#0CF589'
+            ],
+            'circle-radius': 5
+        }
+    });
+
+    addHoverEvent();
+    addClickEvent();
 });
 
-function replaceSideSheetContent(placeName) {
-    fetch('/place/' + placeName)
+function getMapPinFeatures() {
+    const featuresList = []
+    mapPinsData.forEach(function(mapPinData) {
+        var feature = {
+            'type': 'Feature',
+            'properties': {
+                'rating': mapPinData['rating'],
+                'name': mapPinData['name']
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': mapPinData['coordinates'].reverse()
+            }
+        }
+        featuresList.push(feature);
+    });
+    return featuresList;
+}
+
+function addClickEvent() {
+    map.on('click', 'places', (event) => {
+        const placeName = event.features[0].properties['name'];
+        
+        fetch('/place/' + placeName)
         .then(response => response.text())
         .then(data => { placeSideSheet.innerHTML = data });
+    });
+}
+
+function addHoverEvent() {
+    // Make sure to detect marker change for overlapping markers
+    // and use mousemove instead of mouseenter event
+    let currentFeatureCoordinates = undefined;
+    map.on('mousemove', 'places', (event) => {
+        const featureCoordinates = event.features[0].geometry.coordinates.toString();
+        if (currentFeatureCoordinates !== featureCoordinates) {
+            currentFeatureCoordinates = featureCoordinates;
+
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+
+            const description = getPopupHtml(event.features[0].properties);
+            const coordinates = event.features[0].geometry.coordinates.slice();
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        }
+    });
+
+    map.on('mouseleave', 'places', () => {
+        currentFeatureCoordinates = undefined;
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+}
+
+function getPopupHtml(feature_properties) {
+    return '<p>' +  feature_properties['rating'] + ' ' + feature_properties['name'] + '</p>';
 }

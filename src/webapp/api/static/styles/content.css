@@ -8,7 +8,7 @@ body {
     position: fixed;
     z-index: 999;
     display: inline-block;
-    background-color: rgb(12, 198, 245);
+    background-color: #0cc6f5;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }

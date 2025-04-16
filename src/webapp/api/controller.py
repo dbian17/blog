@@ -20,7 +20,7 @@ app.jinja_env.globals.update(display_name = display_name)
 @app.route('/map', methods=['GET'])
 def load_map():
     # go in reverse order so top places load last
-    map_pins = map_view_loader.load(dynamo_service_client.get_all_ranked_place_data(descending=False))
+    map_pins = map_view_loader.load(dynamo_service_client.get_all_ranked_place_data(descending=True))
     return render_template('map.html', map_pins_data=map_pins)
 
 @app.route('/list', methods=['GET'])
