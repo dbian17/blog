@@ -10,6 +10,7 @@ const popup = new maplibregl.Popup({
     closeButton: false,
     closeOnClick: false
 });
+// popup.addClassName('map-pin-popup')
 
 const placeSideSheet = document.getElementById('place-side-sheet');
 
@@ -53,9 +54,10 @@ map.on('load', async () => {
             'circle-radius': 5
         }
     });
-
+    
     addHoverEvent();
     addClickEvent();
+    addSearchEvent();
 });
 
 function getMapPinFeatures() {
@@ -64,8 +66,10 @@ function getMapPinFeatures() {
         var feature = {
             'type': 'Feature',
             'properties': {
+                'id': mapPinData['id'],
                 'rating': mapPinData['rating'],
-                'name': mapPinData['name']
+                'name': mapPinData['name'],
+                'types': mapPinData['types']
             },
             'geometry': {
                 'type': 'Point',
@@ -79,9 +83,9 @@ function getMapPinFeatures() {
 
 function addClickEvent() {
     map.on('click', 'places', (event) => {
-        const placeName = event.features[0].properties['name'];
+        const placeId = event.features[0].properties['id'];
         
-        fetch('/place/' + placeName)
+        fetch('/place/' + placeId)
         .then(response => response.text())
         .then(data => { placeSideSheet.innerHTML = data });
     });
@@ -124,4 +128,14 @@ function addHoverEvent() {
 
 function getPopupHtml(feature_properties) {
     return '<p>' +  feature_properties['rating'] + ' ' + feature_properties['name'] + '</p>';
+}
+
+function addSearchEvent() {
+    const searchBar = document.getElementById('search-bar'); 
+    searchBar.addEventListener('keyup', (e) => {
+        var search_input = e.target.value.toLowerCase();
+        // map.setFilter('places', ['any', ['>=', ['get', 'rating'], 8]])
+        // map.setFilter('places', ['any', ['==', ['get', 'name'], 'Turco']])
+        map.setFilter('places', ['any', ['>', ['index-of', search_input, ['downcase', ['to-string', ['get', 'types']]]], -1]])
+    });
 }

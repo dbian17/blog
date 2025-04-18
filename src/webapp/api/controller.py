@@ -7,14 +7,12 @@ from flask import request
 
 from api.view_loading import request_parser
 from api.view_loading import map_view_loader
+from api.view_loading import view_helper
 from api.service_client.dynamo import dynamo_service_client
 
 app = Flask(__name__)
 
-def display_name(place_name):
-    return place_name.replace("-", " ").title()
-
-app.jinja_env.globals.update(display_name = display_name)
+app.jinja_env.globals.update(display_name = view_helper.get_displayble_name)
 
 @app.route('/', methods=['GET'])
 @app.route('/map', methods=['GET'])
