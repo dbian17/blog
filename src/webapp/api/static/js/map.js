@@ -69,7 +69,7 @@ function getMapPinFeatures() {
                 'id': mapPinData['id'],
                 'rating': mapPinData['rating'],
                 'name': mapPinData['name'],
-                'types': mapPinData['types']
+                'search': mapPinData['types'] + mapPinData['name'] + mapPinData['rating']
             },
             'geometry': {
                 'type': 'Point',
@@ -134,8 +134,6 @@ function addSearchEvent() {
     const searchBar = document.getElementById('search-bar'); 
     searchBar.addEventListener('keyup', (e) => {
         var search_input = e.target.value.toLowerCase();
-        // map.setFilter('places', ['any', ['>=', ['get', 'rating'], 8]])
-        // map.setFilter('places', ['any', ['==', ['get', 'name'], 'Turco']])
-        map.setFilter('places', ['any', ['>', ['index-of', search_input, ['downcase', ['to-string', ['get', 'types']]]], -1]])
+        map.setFilter('places', ['any', ['>', ['index-of', search_input, ['downcase', ['to-string', ['get', 'search']]]], -1]])
     });
 }
