@@ -18,6 +18,12 @@
     border-bottom: 1px solid #ced4de;
 }
 
+.place-list-table-header {
+    position: sticky;
+    top: 122px;
+    background-color: #0CBFEC;
+}
+
 .place-list-table tr {
     height: 60px;
     border-bottom: 1px solid #ced4de;
