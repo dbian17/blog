@@ -12,7 +12,15 @@ const popup = new maplibregl.Popup({
 });
 // popup.addClassName('map-pin-popup')
 
-const placeSideSheet = document.getElementById('place-side-sheet');
+const PLACE_SIDE_SHEET_CONTENT = document.getElementById('place-side-sheet-content');
+const PLACE_SIDE_SHEET = document.getElementById('place-side-sheet');
+const PLACE_SIDE_SHEET_CLOSE_BUTTON = document.getElementById('place-side-sheet-close-button');
+
+PLACE_SIDE_SHEET_CLOSE_BUTTON.addEventListener('click', (e) => {
+    PLACE_SIDE_SHEET.style.width = "0px";
+});
+
+
 
 map.on('load', async () => {
     // const image = await map.loadImage('https://maplibre.org/maplibre-gl-js/docs/assets/custom_marker.png');
@@ -87,9 +95,20 @@ function addClickEvent() {
         
         fetch('/place/' + placeId)
         .then(response => response.text())
-        .then(data => { placeSideSheet.innerHTML = data });
+        .then(data => { PLACE_SIDE_SHEET_CONTENT.innerHTML = data });
+        PLACE_SIDE_SHEET.style.width = "30%";
     });
 }
+
+// /* Set the width of the side navigation to 250px */
+// function openNav() {
+//     document.getElementById("mySidenav").style.width = "250px";
+//   }
+  
+//   /* Set the width of the side navigation to 0 */
+//   function closeNav() {
+//     document.getElementById("mySidenav").style.width = "0";
+//   }
 
 function addHoverEvent() {
     // Make sure to detect marker change for overlapping markers

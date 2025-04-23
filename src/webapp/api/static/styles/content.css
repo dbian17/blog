@@ -30,5 +30,13 @@ body {
     position:fixed;
     display: inline-block;
     background-color: rgb(255, 255, 255);
-    width: 30%;
+    width: 0;
+    transition: 0.5s;
+    overflow-x: hidden;
+}
+
+#place-side-sheet-close-button {
+    color: #000000;
+    text-decoration: none;
+    font-size: 36px;
 }
