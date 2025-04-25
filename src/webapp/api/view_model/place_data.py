@@ -12,9 +12,16 @@ class Place_Data:
             self.rating = Decimal(str(rating))
         else:
             self.rating = None
-            
-        self.types = types
-        self.tagline = tagline
+        
+        if types:
+            self.types = types
+        else:
+            self.types = []
+        
+        if tagline:
+            self.tagline = tagline
+        else:
+            self.tagline = None
 
         if coordinates:
             self.coordinates = [Decimal(str(coordinate)) for coordinate in coordinates]
