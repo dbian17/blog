@@ -18,3 +18,12 @@
     position: sticky;
     top: 70px; /* Match with margin-top */
 }
+
+@media (max-device-width: 768px) {
+    #search-bar {
+        font-size: 36px;
+        margin-top: 150px; 
+        border-radius: 100px;
+        text-indent: 30px;
+    }
+}

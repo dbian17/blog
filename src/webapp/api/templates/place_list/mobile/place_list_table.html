@@ -1,0 +1,8 @@
+<table class="place-list-table">
+        {% for place in places %}
+            <tr onclick="window.location='/place/{{place.name}}'">
+                {% include 'place_list/mobile/place_list_item.html' %}
+            </tr>
+        {% endfor %}
+</table>
+

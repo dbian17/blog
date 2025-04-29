@@ -1,0 +1,24 @@
+<!doctype html>
+<!-- var: place (Place Object) -->
+
+<td class="place-list-item-container">
+
+  <div class="place-list-item-rating">{{place.rating}}</div>
+
+  <div class="place-list-item-name">{{display_name(place.name)}}</div>
+
+  {% if place.types %}
+    <div class="place-list-item-types">
+      {% for type in place.types %}
+      <button class="place-list-item-type"> {{display_name(type)}} </button>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if place.tagline %}
+    <div class="place-list-item-tagline">
+      {{place.tagline}}
+    </div>
+  {% endif %}
+
+</td>

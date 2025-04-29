@@ -5,6 +5,8 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
+import user_agents
+
 from api.view_loading import request_parser
 from api.view_loading import map_view_loader
 from api.view_loading import view_helper
@@ -24,7 +26,8 @@ def load_map():
 @app.route('/list', methods=['GET'])
 def load_list():
     places_data = dynamo_service_client.get_all_ranked_place_data()
-    return render_template('place_list/place_list.html', places=places_data)
+    is_desktop = user_agents.parse(request.user_agent.string).is_pc
+    return render_template('place_list/place_list.html', places=places_data, is_desktop=is_desktop)
 
 @app.route('/review', methods=['GET'])
 def load_review_submission():
