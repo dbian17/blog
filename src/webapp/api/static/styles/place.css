@@ -10,3 +10,9 @@
 #place-review {
     white-space: pre-wrap;
 }
+
+@media (max-device-width: 768px) {
+    #place-content {
+        margin-top: 150px; /* Match height of nav bar */
+    }
+}

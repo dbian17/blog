@@ -5,3 +5,10 @@
     border: none;
     text-decoration: none;
 }
+
+@media (max-device-width: 768px) {
+    .place-list-item-type {
+        height: 36px;
+        font-size: 30px;
+    }
+}

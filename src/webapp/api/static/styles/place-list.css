@@ -87,11 +87,6 @@
         text-align: left;
         align-content: center;
     }
-
-    .place-list-item-type {
-        height: 36px;
-        font-size: 30px;
-    }
     
     .place-list-item-tagline {
         grid-area: tagline;
