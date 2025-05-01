@@ -1,7 +1,7 @@
-from api.view_model.place_data import Place_Data
+from api.view_model.place_data import PlaceData
 from api.view_loading import view_helper
 
-def create_map_pin_dict(place_data: Place_Data):
+def create_map_pin_dict(place_data: PlaceData):
     place_map_pins = []
     if place_data.coordinates:
         for i in range(len(place_data.coordinates)//2):
@@ -14,7 +14,7 @@ def create_map_pin_dict(place_data: Place_Data):
             place_map_pins.append(map_pin)
     return place_map_pins
 
-def load(place_data: list[Place_Data]):
+def load(place_data: list[PlaceData]):
     all_map_pins = []
     for place in place_data:
         all_map_pins.extend(create_map_pin_dict(place))        

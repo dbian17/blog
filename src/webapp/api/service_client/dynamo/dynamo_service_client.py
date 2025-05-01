@@ -1,7 +1,7 @@
 import boto3
 from api.view_model.place import Place
-from api.view_model.place_data import Place_Data
-from api.view_model.place_review import Place_Review
+from api.view_model.place_data import PlaceData
+from api.view_model.place_review import PlaceReview
 
 PLACE_DATA_TABLE_NAME = 'Place-Data'
 PLACE_REVIEW_TABLE_NAME = 'Place-Reviews'
@@ -15,27 +15,27 @@ def get_place_table_key(place_name: str):
 def get_all_ranked_place_data(descending=True):
     table = client.Table(PLACE_DATA_TABLE_NAME)
     response = table.scan()
-    places = [Place_Data(**response_item_dict) for response_item_dict in response['Items']]
+    places = [PlaceData(**response_item_dict) for response_item_dict in response['Items']]
     places.sort(key = lambda place: place.rating, reverse=descending)
     return places
 
 def get_all_place_data():
     table = client.Table(PLACE_DATA_TABLE_NAME)
     response = table.scan()
-    places = [Place_Data(**response_item_dict) for response_item_dict in response['Items']]
+    places = [PlaceData(**response_item_dict) for response_item_dict in response['Items']]
     return places
 
 def get_place_data(place_name):
     place_data_dict = get_item_from_table(PLACE_DATA_TABLE_NAME, get_place_table_key(place_name))
     if place_data_dict:
-        return Place_Data(**place_data_dict)
+        return PlaceData(**place_data_dict)
     else:
         return None
     
 def get_place_review(place_name):
     place_review_dict = get_item_from_table(PLACE_REVIEW_TABLE_NAME, get_place_table_key(place_name))
     if place_review_dict:
-        return Place_Review(**place_review_dict)
+        return PlaceReview(**place_review_dict)
     else:
         return None
 
@@ -55,7 +55,7 @@ def add_place(place: Place):
     return data_response_code == '200' and review_response_code == '200'
 
 def add_place_review(place: Place):
-    place_review_dict = Place_Review.get_from_place(place).__dict__
+    place_review_dict = PlaceReview.get_from_place(place).__dict__
     present_attributes = {key: value for key, value in place_review_dict.items() if value is not None and key != 'name'}
     if len(present_attributes) > 0:
         return add_attributes_to_table(PLACE_REVIEW_TABLE_NAME, get_place_table_key(place.name), present_attributes)
@@ -63,7 +63,7 @@ def add_place_review(place: Place):
         return '200'
 
 def add_place_data(place: Place):
-    place_data_dict = Place_Data.get_from_place(place).__dict__
+    place_data_dict = PlaceData.get_from_place(place).__dict__
     present_attributes = {key: value for key, value in place_data_dict.items() if value is not None and key != 'name'}
     if len(present_attributes) > 0:
         return add_attributes_to_table(PLACE_DATA_TABLE_NAME, get_place_table_key(place.name), present_attributes)

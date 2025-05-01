@@ -3,9 +3,9 @@ from decimal import Decimal
 
 from api.view_model.place import Place
 
-class Place_Data:
+class PlaceData:
 
-    def __init__(self, name: str, rating: float = 0, types: list[str] = None, tagline: str = None, coordinates: list[float] = None):
+    def __init__(self, name: str, rating: float = 0, types: list[str] = None, tagline: str = None, coordinates: list[float] = None, city: str = None, country: str = None):
         self.name = name.lower().replace(" ", "-")
         
         if rating:
@@ -28,9 +28,18 @@ class Place_Data:
         else:
             self.coordinates = None
 
+        if city:
+            self.city = city
+        else:
+            self.city = None
+
+        if country:
+            self.country = country
+        else:
+            self.country = None
+
     def get_from_place(place: Place):
-        print(place)
-        return Place_Data(name=place.name, rating=place.rating, types=place.types, tagline=place.tagline, coordinates=place.coordinates) 
+        return PlaceData(name=place.name, rating=place.rating, types=place.types, tagline=place.tagline, coordinates=place.coordinates, city=place.city, country=place.country) 
 
 
     def __repr__(self):

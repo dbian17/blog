@@ -1,4 +1,4 @@
-const NON_LIST_FORM_LABELS = ["name", "rating", "tagline", "review"]
+const NON_LIST_FORM_LABELS = ["name", "rating", "tagline", "review", "city", "country"]
 const LIST_FORM_LABELS = ["types", "coordinates"];
 
 window.addEventListener('load', function () {
