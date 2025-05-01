@@ -41,6 +41,7 @@ def get_place(place_name):
 
 @app.route('/place', methods=['POST'])
 def add_place():
-    new_place = request_parser.parse_place(request)
-    dynamo_service_client.add_place(new_place)
+    new_place_data = request_parser.parse_place_data(request)
+    new_place_review = request_parser.parse_place_review(request)
+    dynamo_service_client.add_place(new_place_data, new_place_review)
     return "receive"

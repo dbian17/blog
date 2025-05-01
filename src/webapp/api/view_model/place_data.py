@@ -1,8 +1,6 @@
 import simplejson as json
 from decimal import Decimal
 
-from api.view_model.place import Place
-
 class PlaceData:
 
     def __init__(self, name: str, rating: float = 0, types: list[str] = None, tagline: str = None, coordinates: list[float] = None, city: str = None, country: str = None):
@@ -37,10 +35,6 @@ class PlaceData:
             self.country = country
         else:
             self.country = None
-
-    def get_from_place(place: Place):
-        return PlaceData(name=place.name, rating=place.rating, types=place.types, tagline=place.tagline, coordinates=place.coordinates, city=place.city, country=place.country) 
-
 
     def __repr__(self):
         return json.dumps(self.__dict__)

@@ -1,5 +1,4 @@
 import boto3
-from api.view_model.place import Place
 from api.view_model.place_data import PlaceData
 from api.view_model.place_review import PlaceReview
 
@@ -49,24 +48,24 @@ def get_item_from_table(table_name: str, key: dict):
         return None
 
 # Add place object into dynamoDb
-def add_place(place: Place):
-    data_response_code = add_place_data(place)
-    review_response_code = add_place_review(place)
+def add_place(place_data: PlaceData, place_review: PlaceReview):
+    data_response_code = add_place_data(place_data)
+    review_response_code = add_place_review(place_review)
     return data_response_code == '200' and review_response_code == '200'
 
-def add_place_review(place: Place):
-    place_review_dict = PlaceReview.get_from_place(place).__dict__
-    present_attributes = {key: value for key, value in place_review_dict.items() if value is not None and key != 'name'}
+def add_place_data(place_data: PlaceData):
+    place_data_dict = place_data.__dict__
+    present_attributes = {key: value for key, value in place_data_dict.items() if value is not None and key != 'name'}
     if len(present_attributes) > 0:
-        return add_attributes_to_table(PLACE_REVIEW_TABLE_NAME, get_place_table_key(place.name), present_attributes)
+        return add_attributes_to_table(PLACE_DATA_TABLE_NAME, get_place_table_key(place_data.name), present_attributes)
     else:
         return '200'
 
-def add_place_data(place: Place):
-    place_data_dict = PlaceData.get_from_place(place).__dict__
-    present_attributes = {key: value for key, value in place_data_dict.items() if value is not None and key != 'name'}
+def add_place_review(place_review: PlaceReview):
+    place_review_dict = place_review.__dict__
+    present_attributes = {key: value for key, value in place_review_dict.items() if value is not None and key != 'name'}
     if len(present_attributes) > 0:
-        return add_attributes_to_table(PLACE_DATA_TABLE_NAME, get_place_table_key(place.name), present_attributes)
+        return add_attributes_to_table(PLACE_REVIEW_TABLE_NAME, get_place_table_key(place_review.name), present_attributes)
     else:
         return '200'
 

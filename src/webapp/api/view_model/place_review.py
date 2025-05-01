@@ -1,15 +1,13 @@
 import simplejson as json
 
-from api.view_model.place import Place
-
 class PlaceReview:
 
-    def __init__(self, name: str, review: str):
+    def __init__(self, name: str, review: str = None):
         self.name = name.lower().replace(" ", "-")
-        self.review = review
-
-    def get_from_place(place: Place):
-        return PlaceReview(name=place.name, review=place.review)
+        if review:
+            self.review = review
+        else:
+            self.review = None
 
     def __repr__(self):
         return json.dumps(self.__dict__)
