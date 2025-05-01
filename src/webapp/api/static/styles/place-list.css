@@ -63,15 +63,15 @@
         "rating name"
         "rating types"
         "rating tagline";
-        grid-template-columns: 1fr 4fr;
-        padding: 50px
+        grid-template-columns: 2fr 5fr;
+        padding: 50px;
+        padding-left: 0px;
     }
 
     .place-list-item-rating {
         font-size: 48px;
         align-content: center;
         grid-area: rating;
-        /* border-style: solid; */
     }
 
     .place-list-item-name {
@@ -79,7 +79,6 @@
         font-size: 36px;
         text-align: left;
         align-content: center
-        /* border-style: solid; */
     }
 
     .place-list-item-types {
