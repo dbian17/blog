@@ -33,6 +33,12 @@ def load_list():
 def load_review_submission():
     return render_template('review_form.html')
 
+@app.route('/review/<place_name>', methods=['GET'])
+def load_existing_review_submission(place_name):
+    place_data = dynamo_service_client.get_place_data(place_name)
+    place_review = dynamo_service_client.get_place_review(place_name)
+    return render_template('review_form.html', place_data=place_data, place_review=place_review)
+
 @app.route('/place/<place_name>', methods=['GET'])
 def get_place(place_name):
     place_data = dynamo_service_client.get_place_data(place_name)

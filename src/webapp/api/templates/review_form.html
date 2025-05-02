@@ -1,6 +1,16 @@
 <!doctype html>
 
 {% block javascript %}
+    <script>
+        {% if place_data %}
+            var existingPlaceData = {{ place_data.__dict__ | tojson}};
+        {% endif %}
+
+        {% if place_review %}
+            var existingPlaceReview = {{ place_review.__dict__ | tojson}};
+        {% endif %}
+    </script>
+
     <script src="{{ url_for('static',filename='js/review-form.js') }}"></script>
 {% endblock %}
 
