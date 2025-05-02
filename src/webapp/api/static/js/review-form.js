@@ -12,11 +12,10 @@ window.addEventListener('load', function () {
 
         if (responseCode == "200") {
             reviewForm.append("Review post suceeded");
+            reviewForm.reset();
         } else {
             reviewForm.append("Review post failed");
         }
-
-        reviewForm.reset();
     });
   })
 
