@@ -98,6 +98,7 @@
         grid-area: tagline;
         text-align: left;
         align-content: center;
-        font-size: 30px
+        font-size: 30px;
+        font-style: italic;
     }
 }
