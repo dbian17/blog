@@ -52,20 +52,19 @@
     .place-list-table tr {
         border-bottom: solid #ced4de;
         border-bottom-width: thin;
-        height: 300px;
         align-content: center;
     }
 
     .place-list-item-container {
         display: grid;
-        height: 250px;
+        height: 225px;
         grid-template-areas:
         "rating name"
         "rating location"
         "rating types"
         "rating tagline";
         grid-template-columns: 2fr 5fr;
-        padding: 50px;
+        padding: 30px;
         padding-left: 0px;
     }
 
