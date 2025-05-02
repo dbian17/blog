@@ -6,6 +6,16 @@
 <td class="place-list-item-name">{{display_name(place.name)}}</td>
 
 <td>
+  {% if place.city and place.country %}
+    {{place.city}}, {{place.country}}
+  {% elif place.city %}
+    {{place.city}}
+  {% elif place.country %}
+    {{place.country}}
+  {% endif %}
+</td>
+
+<td>
   {% if place.types %}
     {% for type in place.types %}
     <button class="place-list-item-type"> {{display_name(type)}} </button>

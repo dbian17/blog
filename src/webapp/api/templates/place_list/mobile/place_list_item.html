@@ -7,6 +7,16 @@
 
   <div class="place-list-item-name">{{display_name(place.name)}}</div>
 
+  <div class="place-list-item-location">
+    {% if place.city and place.country %}
+      {{place.city}}, {{place.country}}
+    {% elif place.city %}
+      {{place.city}}
+    {% elif place.country %}
+      {{place.country}}
+    {% endif %}
+  </div>
+
   {% if place.types %}
     <div class="place-list-item-types">
       {% for type in place.types %}

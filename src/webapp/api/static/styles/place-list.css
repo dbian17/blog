@@ -61,6 +61,7 @@
         height: 250px;
         grid-template-areas:
         "rating name"
+        "rating location"
         "rating types"
         "rating tagline";
         grid-template-columns: 2fr 5fr;
@@ -77,6 +78,13 @@
     .place-list-item-name {
         grid-area: name;
         font-size: 36px;
+        text-align: left;
+        align-content: center
+    }
+    
+    .place-list-item-location {
+        grid-area: location;
+        font-size: 30px;
         text-align: left;
         align-content: center
     }
