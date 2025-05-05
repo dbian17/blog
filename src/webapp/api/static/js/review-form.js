@@ -78,7 +78,6 @@ function populatePlaceDataFormElements(formElements) {
 }
 
 function populatePlaceReviewFormElements(formElements) {
-
     try {
         if (existingPlaceReview) {
             REVIEW_FORM_LABELS.forEach(input => populateFormField(existingPlaceReview, input, false, formElements));
