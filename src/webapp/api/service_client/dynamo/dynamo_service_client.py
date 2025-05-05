@@ -10,14 +10,17 @@ client = boto3.resource('dynamodb')
 def get_place_table_key(place_name: str):
     return {'name': place_name}
 
-# Get all place objects from dynamoDb
+# Get all place objects from dynamoDb and sorts based on rating
+# Only return places with a rating stored in dynamoDb
 def get_all_ranked_place_data(descending=True):
     table = client.Table(PLACE_DATA_TABLE_NAME)
     response = table.scan()
     places = [PlaceData(**response_item_dict) for response_item_dict in response['Items']]
-    places.sort(key = lambda place: place.rating, reverse=descending)
-    return places
+    ranked_places = [place for place in places if place.rating != None]
+    ranked_places.sort(key = lambda place: place.rating, reverse=descending)
+    return ranked_places
 
+# Get all place objects from dynamoDb
 def get_all_place_data():
     table = client.Table(PLACE_DATA_TABLE_NAME)
     response = table.scan()

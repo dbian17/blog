@@ -9,7 +9,7 @@ class PlaceData:
         if rating:
             self.rating = Decimal(str(rating))
         else:
-            self.rating = 0
+            self.rating = None
         
         if types:
             self.types = types
