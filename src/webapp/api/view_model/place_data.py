@@ -14,7 +14,7 @@ class PlaceData:
         if types:
             self.types = types
         else:
-            self.types = []
+            self.types = None
         
         if tagline:
             self.tagline = tagline
