@@ -1,0 +1,49 @@
+#guide-container {
+    width: 80%;
+    margin-top: 70px; /* Match height of nav bar */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.guide-header {
+    font-weight: bold;
+    font-size:24px;
+}
+
+.ratings-breakdown-table {
+    margin: 25px 0;
+    width:70%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    text-align: center;
+    font-optical-sizing: auto;
+}
+
+.ratings-breakdown-table th {
+    font-weight:600;
+    font-size: 16px;
+    height: 40px;
+    border-bottom: 1px solid #ced4de;
+}
+
+.ratings-breakdown-table-header {
+    position: sticky;
+    top: 122px;
+    background-color: #0CBFEC;
+}
+
+.ratings-breakdown-table tr {
+    height: 60px;
+    border-bottom: 1px solid #ced4de;
+    cursor: pointer;
+    padding-top: 20px;
+    padding-top: 20px;
+}
+
+@media (max-device-width: 768px) {
+    #guide-header {
+        margin-top: 150px; /* Match height of nav bar */
+    }
+}

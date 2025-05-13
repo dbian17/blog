@@ -1,0 +1,99 @@
+{% extends "content.html" %}
+{% block content %}
+  <!doctype html>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/guide.css') }}">
+  <div id="guide-container">
+        <div>Welcome to my stream-of-consciousness food diary :) </div>
+        <br>
+        <div class="guide-header">
+            Ratings Breakdown
+        </div>
+
+        <table class="ratings-breakdown-table">
+            <tr class = "ratings-breakdown-table-header">
+                <th>Rating</th>
+                <th>Breakdown</th>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Perfection. Absolute perfection.</td>
+            </tr>
+            <tr>
+                <td>9.5</td>
+                <td> <a href="https://www.youtube.com/shorts/lIr7enP8Dhk" target="_blank">WOOOOOOOOO</a></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>This place spoke to me on a deep and personal level. It's tied to a core memory</td>
+            </tr>
+            <tr>
+                <td>8.5</td>
+                <td>At this level and above, vibes start to play a bigger role. The food is awesome without question. Restaurants usually do something that is best in their city and don't have any major misses</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Great food. If you wanted x cusine, I'd recommend this place regardless of where you are. I start craving this place specifically instead of the cuisine related to it</td>
+            </tr>
+            <tr>
+                <td>7.5</td>
+                <td>If you want x cuisine in y area, I'd share this place</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Good food but probably wouldn't go again unless someone else wanted to go or I was in the area.</td>
+            </tr>
+            <tr>
+                <td>6.5</td>
+                <td>Honestly at this rating, I won't even bother adding it to thie site lol (unless it deserved the hate)</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <div class="guide-header">
+            Tenets/rationale/philosophy (section name in progress):
+        </div>
+        <br>
+        <div> 
+            This website is not meant to be a universal source of truth, because food taste, much like art or music taste, is subjective. 
+            I've listed a bunch of core principles below to hopefully paint a better picture of what I look for in a restaurant, but they are 
+            no means a strict ruleset. 
+        </div>
+        <br>
+        <div>
+            If you agree with at least some of these points, then I hope this body of work serves you well.
+            If not, then I don't think we can be friends! (haha jkjk...but not really)
+        </div>
+
+        <ul id="tenets-list">
+            <li> 
+                There is no such thing as a 10: Perfection does not exist. Much like chasing an asymptote, 
+                we can get closer and closer to it, but we'll never quite get there.
+            </li>
+            <li> 
+                Texture over flavor: Would you rather have perfectly seasoned chicken but it's dry af or unseasoned chicken with perfect texture? 
+                Im taking the bland chicken all day everyday and I'm dying on that hill. Texture is just so much harder to nail than flavorings imo. 
+                More often than not, if something tastes plain, all you need to do is add salt. You don't even need extra sauces or spices. 
+                Meanwhile, good luck trying to make your well-done steak more tender.
+            </li>
+            <li> 
+                Sauce should not be the main attraction: Sauce should enhance an already good dish or add another dimension of flavors. 
+                It should never be the main driving force. If something absolutely needs sauce to taste good (looking at you Raising Cane's), 
+                then it wasn't very good to begin with.
+                
+            </li>
+            <li> 
+                Portion sizing is overrated: This is not a 'worth it' guide. I'm not going to rate a place higher because the portions are larger 
+                if the food is still mid. Now if the place has good food AND serves a lot of it? That's a different story haha.
+                Quite frankly though, most standard portions at restaurants aren't enough for me so I'm not going to dock points, 
+                because I didn't come out full
+            </li>
+            <li>
+                Fine dining is an experience not a meal:
+            </li>
+        </ul>
+
+
+    </div>
+{% endblock %}
+

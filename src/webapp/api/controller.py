@@ -52,3 +52,7 @@ def add_place():
     new_place_review = request_parser.parse_place_review(request)
     dynamo_service_client.add_place(new_place_data, new_place_review)
     return "receive"
+
+@app.route('/guide', methods=['GET'])
+def get_guide():
+    return render_template('guide.html')
