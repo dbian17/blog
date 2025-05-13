@@ -33,6 +33,7 @@ body {
     width: 0;
     transition: 0.5s;
     overflow-x: hidden;
+    height: 85%;
 }
 
 #place-side-sheet-close-button {
