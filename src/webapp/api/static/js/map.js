@@ -31,7 +31,7 @@ map.on('load', async () => {
         'type': 'geojson',
         'data': {
             'type': 'FeatureCollection',
-            'features': getMapPinFeatures()
+            'features': addPins()
         }
     });
 
@@ -59,7 +59,7 @@ map.on('load', async () => {
                 10,
                 '#0CF589'
             ],
-            'circle-radius': 5
+            'circle-radius': isDesktop ? 5 : 20
         }
     });
     
@@ -68,7 +68,7 @@ map.on('load', async () => {
     addSearchEvent();
 });
 
-function getMapPinFeatures() {
+function addPins() {
     const featuresList = []
     mapPinsData.forEach(function(mapPinData) {
         var feature = {

@@ -21,7 +21,8 @@ app.jinja_env.globals.update(display_name = view_helper.get_displayble_name)
 def load_map():
     # go in reverse order so top places load last
     map_pins = map_view_loader.load(dynamo_service_client.get_all_ranked_place_data(descending=True))
-    return render_template('map.html', map_pins_data=map_pins)
+    is_desktop = user_agents.parse(request.user_agent.string).is_pc
+    return render_template('map.html', map_pins_data=map_pins, is_desktop=is_desktop)
 
 @app.route('/list', methods=['GET'])
 def load_list():
