@@ -25,7 +25,7 @@ body {
     margin:auto;
 }
 
-#place-side-sheet {
+.place-content-sheet {
     z-index: 5;
     position:fixed;
     display: inline-block;
@@ -33,13 +33,41 @@ body {
     width: 0;
     transition: 0.5s;
     overflow-x: hidden;
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#place-side-sheet {
     height: 85%;
 }
 
-#place-side-sheet-close-button {
+#place-bottom-sheet {
+    z-index: 5;
+    bottom: 0;
+    left: 0;
+}
+
+.place-content-sheet-close-button {
     color: #000000;
     text-decoration: none;
     font-size: 36px;
+}
+
+#place-bottom-sheet-drag-handle {
+    width: 30px;
+    height: 30px;
+    background-color: #0cc6f5;
+    border-radius: 10px;
+    cursor: grab;
+    margin: 0 auto;
+}
+
+#place-bottom-sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
 }
 
 @media (max-device-width: 768px) {

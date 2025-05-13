@@ -16,11 +16,17 @@ const PLACE_SIDE_SHEET_CONTENT = document.getElementById('place-side-sheet-conte
 const PLACE_SIDE_SHEET = document.getElementById('place-side-sheet');
 const PLACE_SIDE_SHEET_CLOSE_BUTTON = document.getElementById('place-side-sheet-close-button');
 
+const PLACE_BOTTOM_SHEET_CONTENT = document.getElementById('place-bottom-sheet-content');
+const PLACE_BOTTOM_SHEET = document.getElementById('place-bottom-sheet')
+const PLACE_BOTTOM_SHEET_CLOSE_BUTTON = document.getElementById('place-bottom-sheet-close-button');
+
 PLACE_SIDE_SHEET_CLOSE_BUTTON.addEventListener('click', (e) => {
     PLACE_SIDE_SHEET.style.width = "0px";
 });
 
-
+PLACE_BOTTOM_SHEET_CLOSE_BUTTON.addEventListener('click', (e) => {
+    PLACE_BOTTOM_SHEET.style.maxHeight = "0px";
+});
 
 map.on('load', async () => {
     // const image = await map.loadImage('https://maplibre.org/maplibre-gl-js/docs/assets/custom_marker.png');
@@ -92,23 +98,26 @@ function addPins() {
 function addClickEvent() {
     map.on('click', 'places', (event) => {
         const placeId = event.features[0].properties['id'];
-        
-        fetch('/place/' + placeId)
-        .then(response => response.text())
-        .then(data => { PLACE_SIDE_SHEET_CONTENT.innerHTML = data });
-        PLACE_SIDE_SHEET.style.width = "30%";
+
+        if (isDesktop) {
+            fetch('/place/' + placeId)
+            .then(response => response.text())
+            .then(data => { PLACE_SIDE_SHEET_CONTENT.innerHTML = data });
+            
+            PLACE_SIDE_SHEET.style.width = "30%";
+        } else {
+            fetch('/place/' + placeId)
+            .then(response => response.text())
+            .then(data => { PLACE_BOTTOM_SHEET_CONTENT.innerHTML = data });
+            
+            PLACE_BOTTOM_SHEET.style.maxHeight = "60%";
+            PLACE_BOTTOM_SHEET.style.width = "100%";
+            PLACE_BOTTOM_SHEET.style.display = "block";
+            document.body.style.overflow = "hidden";
+            PLACE_BOTTOM_SHEET.style.bottom = "0";
+        }
     });
 }
-
-// /* Set the width of the side navigation to 250px */
-// function openNav() {
-//     document.getElementById("mySidenav").style.width = "250px";
-//   }
-  
-//   /* Set the width of the side navigation to 0 */
-//   function closeNav() {
-//     document.getElementById("mySidenav").style.width = "0";
-//   }
 
 function addHoverEvent() {
     // Make sure to detect marker change for overlapping markers
@@ -156,3 +165,37 @@ function addSearchEvent() {
         map.setFilter('places', ['any', ['>', ['index-of', search_input, ['downcase', ['to-string', ['get', 'search']]]], -1]])
     });
 }
+
+// let isDragging = false;
+// let startY, startBottom;
+
+// dragHandle
+//     .addEventListener("mousedown", startDragging);
+
+// function startDragging(e) {
+//     console.log("Dragging")
+//     e.preventDefault();
+//     isDragging = true;
+//     startY = e.clientY;
+//     startBottom =
+//         parseInt(getComputedStyle(PLACE_BOTTOM_SHEET).bottom);
+
+//     document.addEventListener("mousemove", drag);
+//     document.addEventListener("mouseup", stopDragging);
+// }
+
+// function drag(e) {
+//     if (!isDragging) return;
+//     const deltaY =
+//         e.clientY - startY;
+//     PLACE_BOTTOM_SHEET.style.bottom =
+//         Math.max(startBottom - deltaY, 0) + "px";
+// }
+
+// function stopDragging() {
+//     isDragging = false;
+//     document
+//         .removeEventListener("mousemove", drag);
+//     document
+//         .removeEventListener("mouseup", stopDragging);
+// }

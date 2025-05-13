@@ -12,9 +12,18 @@
 
   {% include 'components/search_bar.html' %}
 
-  <div id="place-side-sheet">
-    <a href="javascript:void(0)" id="place-side-sheet-close-button">&times;</a>
+  <div id="place-side-sheet" class="place-content-sheet">
+    <a href="javascript:void(0)" id="place-side-sheet-close-button" class="place-content-sheet-close-button">&times;</a>
     <div id="place-side-sheet-content"></div>
+  </div>
+
+  <div id="place-bottom-sheet" class="place-content-sheet">
+    <div id="place-bottom-sheet-header">
+      <!-- <div id="place-bottom-sheet-drag-handle"></div> -->
+      <a href="javascript:void(0)" id="place-bottom-sheet-close-button" class="place-content-sheet-close-button">&times;</a>
+    </div>
+
+    <div id="place-bottom-sheet-content"></div>
   </div>
 
   <div id="map"></div>
