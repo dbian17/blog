@@ -1,0 +1,7 @@
+@media (max-device-width: 768px) {
+
+    .maplibregl-ctrl-group button {
+        height: 50px;
+        width: 50px;
+    }
+}

@@ -6,6 +6,17 @@ const map = new maplibregl.Map({
     zoom: 12
 });
 
+map.addControl(
+    new maplibregl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    }
+    ),
+    "bottom-right"
+);
+
 const popup = new maplibregl.Popup({
     closeButton: false,
     closeOnClick: false
