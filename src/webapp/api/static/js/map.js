@@ -76,7 +76,7 @@ map.on('load', async () => {
                 10,
                 '#0CF589'
             ],
-            'circle-radius': isDesktop ? 5 : 20
+            'circle-radius': getCircleRadius()
         }
     });
     
@@ -84,6 +84,15 @@ map.on('load', async () => {
     addClickEvent();
     addSearchEvent();
 });
+
+function getCircleRadius() {
+    if (isDesktop) {
+        return ['interpolate', ['linear'], ['zoom'], 8, 2, 15, 10]
+    }
+    else {
+        return ['interpolate', ['linear'], ['zoom'], 10, 5, 16, 20]
+    }
+}
 
 function addPins() {
     const featuresList = []
