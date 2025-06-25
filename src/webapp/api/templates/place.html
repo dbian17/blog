@@ -3,26 +3,27 @@
   <!doctype html>
   <!-- var: place (Place Object) -->
   <!-- var: place_name (name of requested place) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/place.css') }}">
-  <div id="place-content">
-    {% if place_data %}
-      <p>Name: {{place_data.name}}</p>
-      {% if place_data.tagline %}
-        <p>Tagline: {{place_data.tagline}}</p>
+  <div id="place-content-container">
+    <div id="place-content">
+      {% if place_data %}
+        <p>Name: {{place_data.name}}</p>
+        {% if place_data.tagline %}
+          <p>Tagline: {{place_data.tagline}}</p>
+        {% endif %}
+
+        {% if place_data.types %}
+          {% for type in place_data.types %}
+          <button class="place-list-item-type"> {{display_name(type)}} </button>
+          {% endfor %}
+        {% endif %}
+
+        <p>Rating: {{place_data.rating}}</p>
+
+        <p id="place-review">{{place_review.review}}</p>
+      {% else %}
+        <h1>Could not find entry for {{place_name}}</h1>
       {% endif %}
-
-      {% if place_data.types %}
-        {% for type in place_data.types %}
-        <button class="place-list-item-type"> {{display_name(type)}} </button>
-        {% endfor %}
-      {% endif %}
-
-      <p>Rating: {{place_data.rating}}</p>
-
-      <p id="place-review">{{place_review.review}}</p>
-    {% else %}
-      <h1>Could not find entry for {{place_name}}</h1>
-    {% endif %}
+    </div>
   </div>
 {% endblock %}
 

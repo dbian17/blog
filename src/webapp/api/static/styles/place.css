@@ -1,18 +1,12 @@
 @import url('/static/styles/place-list-item-type.css');
 
+/* Css for both full page listing and sidesheet/bottomsheet */
 #place-content {
     width: 80%;
-    margin-top: 70px; /* Match height of nav bar */
     margin-left: auto;
     margin-right: auto;
 }
 
 #place-review {
     white-space: pre-wrap;
-}
-
-@media (max-device-width: 768px) {
-    #place-content {
-        margin-top: 150px; /* Match height of nav bar */
-    }
 }

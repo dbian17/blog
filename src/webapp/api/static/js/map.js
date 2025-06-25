@@ -39,6 +39,8 @@ PLACE_BOTTOM_SHEET_CLOSE_BUTTON.addEventListener('click', (e) => {
     PLACE_BOTTOM_SHEET.style.maxHeight = "0px";
 });
 
+const DOM_PARSER = new DOMParser();
+
 map.on('load', async () => {
     // const image = await map.loadImage('https://maplibre.org/maplibre-gl-js/docs/assets/custom_marker.png');
     // // Add an image to use as a custom marker
@@ -122,12 +124,15 @@ function addClickEvent() {
         if (isDesktop) {
             fetch('/place/' + placeId)
             .then(response => response.text())
+            .then(placeHTML => DOM_PARSER.parseFromString(placeHTML, "text/html").querySelector('#place-content-container').innerHTML)
             .then(data => { PLACE_SIDE_SHEET_CONTENT.innerHTML = data });
             
             PLACE_SIDE_SHEET.style.width = "30%";
+
         } else {
             fetch('/place/' + placeId)
             .then(response => response.text())
+            .then(placeHTML => DOM_PARSER.parseFromString(placeHTML, "text/html").querySelector('#place-content-container').innerHTML)
             .then(data => { PLACE_BOTTOM_SHEET_CONTENT.innerHTML = data });
             
             PLACE_BOTTOM_SHEET.style.maxHeight = "60%";
