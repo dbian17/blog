@@ -15,6 +15,7 @@
     z-index: 3;
     font-family: "Montserrat";
     position: sticky;
+    top: 20px;
 }
 
 @media (max-device-width: 768px) {
